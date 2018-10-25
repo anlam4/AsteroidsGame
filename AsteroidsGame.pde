@@ -1,9 +1,13 @@
-//your variable declarations here
+Spaceship hal = new Spaceship();
 public void setup() 
 {
-  size(300,300);
+  size(600,600);
 }
 public void draw() 
 {
-  //your code here
+  hal.show();
+}
+public void keyPressed()
+{
+  
 }
