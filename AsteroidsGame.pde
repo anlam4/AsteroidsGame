@@ -5,6 +5,7 @@ public void setup()
 }
 public void draw() 
 {
+  background(0);
   hal.show();
 }
 public void keyPressed()
