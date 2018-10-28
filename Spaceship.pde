@@ -47,6 +47,16 @@ class Spaceship extends Floater
     }
     endShape(CLOSE);
 
+    if(keyPressed)
+    {
+      if(keyCode == 38)
+      {
+        line(-12,-6,-20,-8);
+        line(-12,0,-20,0);
+        line(-12,6,-20,8);
+      }
+    }
+
     //"unrotate" and "untranslate" in reverse order
     rotate(-1*dRadians);
     translate(-1*(float)myCenterX, -1*(float)myCenterY);
