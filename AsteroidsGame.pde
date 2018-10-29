@@ -1,12 +1,21 @@
 Spaceship hal = new Spaceship();
+Star[] galaxy = new Star[100];
 public void setup() 
 {
   size(600, 600);
   frameRate(1);
+  for(int i = 0; i < galaxy.length; i++)
+  {
+    galaxy[i] = new Star();
+  }
 }
 public void draw() 
 {
   background(0);
+  for(int i = 0; i < galaxy.length; i++)
+  {
+    galaxy[i].show();
+  }
   hal.show();
   keyPressed();
   hal.move();
