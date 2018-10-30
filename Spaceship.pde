@@ -24,8 +24,9 @@ class Spaceship extends Floater
   public double getDirectionY(){return myDirectionY;}   
   public void setPointDirection(int degrees){myPointDirection = degrees;}   
   public double getPointDirection(){return myPointDirection;} 
+  public void setOpacity(int c){myColor = (myColor,c);}  //to change opacity of spaceship
   
-  public void show ()  //Overrides floater's show()  
+  public void show()  //Overrides floater's show()  
   {             
     fill(myColor);   
     stroke(myColor);    

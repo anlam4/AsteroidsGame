@@ -2,7 +2,7 @@ class Star
 {
   private int myWidth;
   private int myHeight;
-  private int myColor;
+  private int starColor;
   private float myX;
   private float myY;
   public Star()
@@ -11,12 +11,12 @@ class Star
     myY = (float)(Math.random()*601);
     myWidth = (int)(Math.random()*4)+1;
     myHeight = myWidth;
-    myColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+    starColor = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
   }
   public void show()
   {
-    fill(myColor);
-    stroke(myColor);
+    fill(starColor);
+    stroke(starColor);
     rect(myX,myY,myWidth,myHeight);
   }
 }
