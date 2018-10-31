@@ -15,9 +15,10 @@ public void draw()
   {
     galaxy[i].show();
   }
+  if (keyPressed) {keyPressed();}  //only calls keyPressed() if a key is pressed
   hal.show();
-  if(keyPressed){keyPressed();}  //only calls keyPressed() if a key is pressed
   hal.move();
+  System.out.println(hal.getPointDirection() + "1");
 }
 public void keyPressed()
 {
@@ -40,10 +41,14 @@ public void keyPressed()
     hal.accelerate(.05);
   } else if (keyCode == 16)  //press shift to enter hyperspace
   {
+    keyReleased();
+  }
+}
+void keyReleased()
+{
+    hal.setDirectionX(0);  //resets acceleration
+    hal.setDirectionY(0);
     hal.setX((int)(Math.random()*600));  //new center X and Y
     hal.setY((int)(Math.random()*600));
     hal.setPointDirection((int)(Math.random()*360));  //new random direction
-    hal.setDirectionX(0);  //resets acceleration
-    hal.setDirectionY(0);
-  }
 }
