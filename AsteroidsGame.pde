@@ -15,7 +15,7 @@ public void draw()
   {
     galaxy[i].show();
   }
-  if (keyPressed) {keyPressed();}  //only calls keyPressed() if a key is pressed
+  if (keyPressed) {keyPressed();}  //only calls keyPressed() if a key is pressed; remove this not needed
   hal.show();
   hal.move();
   System.out.println(hal.getPointDirection() + "1");
@@ -41,7 +41,7 @@ public void keyPressed()
     hal.accelerate(.05);
   } else if (keyCode == 16)  //press shift to enter hyperspace
   {
-    keyReleased();
+    keyReleased();  //remove this and put if statement below; problem: shift pressed too many times
   }
 }
 void keyReleased()
