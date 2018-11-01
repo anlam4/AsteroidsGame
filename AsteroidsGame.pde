@@ -15,10 +15,11 @@ public void draw()
   {
     galaxy[i].show();
   }
-  if (keyPressed) {keyPressed();}  //only calls keyPressed() if a key is pressed; remove this not needed
+  //better response time
+  //hyperspace not included: one press = multiple presses since draw() runs quickly
+  if (keyPressed && keyCode != 16) {keyPressed();}
   hal.show();
   hal.move();
-  System.out.println(hal.getPointDirection() + "1");
 }
 public void keyPressed()
 {
@@ -39,16 +40,12 @@ public void keyPressed()
   } else if (keyCode == 38)  //press up arrow to accelerate
   {
     hal.accelerate(.05);
-  } else if (keyCode == 16)  //press shift to enter hyperspace
+  } else if (keyCode == 16)
   {
-    keyReleased();  //remove this and put if statement below; problem: shift pressed too many times
-  }
-}
-void keyReleased()
-{
     hal.setDirectionX(0);  //resets acceleration
     hal.setDirectionY(0);
     hal.setX((int)(Math.random()*600));  //new center X and Y
     hal.setY((int)(Math.random()*600));
     hal.setPointDirection((int)(Math.random()*360));  //new random direction
+  }
 }
