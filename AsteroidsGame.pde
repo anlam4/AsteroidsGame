@@ -1,5 +1,6 @@
 Spaceship hal = new Spaceship();
 Star[] galaxy = new Star[100];
+Asteroid[] rocks = new Asteroid[50];
 public void setup() 
 {
   size(600, 600);
@@ -14,6 +15,11 @@ public void draw()
   for (int i = 0; i < galaxy.length; i++)
   {
     galaxy[i].show();
+  }
+  for (int i = 0; i < rocks.length; i++)
+  {
+    rocks[i].show();
+    rocks[i].move();
   }
   //better response time
   //hyperspace not included: one press = multiple presses since draw() runs quickly
