@@ -1,6 +1,6 @@
 Spaceship hal = new Spaceship();
 Star[] galaxy = new Star[100];
-Asteroid[] rocks = new Asteroid[50];
+Asteroid[] rocks = new Asteroid[30];
 public void setup() 
 {
   size(600, 600);
@@ -8,15 +8,19 @@ public void setup()
   {
     galaxy[i] = new Star();
   }
+  for (int i = 0; i < rocks.length; i++)
+  {
+    rocks[i] = new Asteroid();
+  }
 }
 public void draw() 
 {
   background(0);
-  for (int i = 0; i < galaxy.length; i++)
+  for (int i = 0; i < galaxy.length; i++)  //displays stars
   {
     galaxy[i].show();
   }
-  for (int i = 0; i < rocks.length; i++)
+  for (int i = 0; i < rocks.length; i++)  //displays and moves asteroids
   {
     rocks[i].show();
     rocks[i].move();
