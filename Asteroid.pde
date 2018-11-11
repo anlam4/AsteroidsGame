@@ -3,9 +3,9 @@ class Asteroid extends Floater
   private int mySpeed;
   public Asteroid()
   {
-    corners  = 12;
-    int[] xS = {1,3,4,4,3,1,-1,-3,-5,-5,-4,-2};
-    int[] yS = {-5,-4,-2,1,3,4,4,3,1,-2,-4,-5};
+    corners  = 10;
+    int[] xS = {4,8,9,7,4,-1,-5,-7,-6,-1};
+    int[] yS = {-8,-5,-1,4,7,7,4,-1,-5,-8};
     xCorners = xS;
     yCorners = yS;
     myColor = color(128,64,0);
