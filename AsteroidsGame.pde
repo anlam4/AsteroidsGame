@@ -1,6 +1,7 @@
 Spaceship hal = new Spaceship();
 Star[] galaxy = new Star[100];
-Asteroid[] rocks = new Asteroid[30];
+ArrayList<Asteroid> rocks = new ArrayList<Asteroid>();
+float d;
 public void setup() 
 {
   size(600, 600);
@@ -8,9 +9,9 @@ public void setup()
   {
     galaxy[i] = new Star();
   }
-  for (int i = 0; i < rocks.length; i++)
+  for (int i = 0; i < 31; i++)
   {
-    rocks[i] = new Asteroid();
+    rocks.add(new Asteroid());
   }
 }
 public void draw() 
@@ -20,10 +21,12 @@ public void draw()
   {
     galaxy[i].show();
   }
-  for (int i = 0; i < rocks.length; i++)  //displays and moves asteroids
+  for (int i = 0; i < rocks.size(); i++)  //displays and moves asteroids
   {
-    rocks[i].show();
-    rocks[i].move();
+    rocks.get(i).show();
+    rocks.get(i).move();
+    d = dist(hal.getX(), hal.getY(), rocks.get(i).getX(), rocks.get(i).getY());
+    if (d <= 9) {rocks.remove(i);}  //9 too small
   }
   //better response time
   //hyperspace not included: one press = multiple presses since draw() runs quickly
