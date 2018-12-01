@@ -26,7 +26,7 @@ public void draw()
     rocks.get(i).show();
     rocks.get(i).move();
     d = dist(hal.getX(), hal.getY(), rocks.get(i).getX(), rocks.get(i).getY());
-    if (d <= 9) {rocks.remove(i);}  //9 too small
+    if (d <= 13) {rocks.remove(i);}
   }
   //better response time
   //hyperspace not included: one press = multiple presses since draw() runs quickly
