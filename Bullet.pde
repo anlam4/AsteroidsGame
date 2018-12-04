@@ -2,12 +2,6 @@ class Bullet extends Floater
 {
   Bullet(Spaceship theShip)
   {
-    //corners  = 10;
-    //int[] xS = {4,8,9,7,4,-1,-5,-7,-6,-1};
-    //int[] yS = {-8,-5,-1,4,7,7,4,-1,-5,-8};
-    //xCorners = xS;
-    //yCorners = yS;
-    myColor = color(128,64,0);  //change color
     myCenterX = theShip.getX();
     myCenterY = theShip.getY();
     myPointDirection = theShip.getPointDirection();
@@ -26,9 +20,12 @@ class Bullet extends Floater
   public void setPointDirection(int degrees) {myPointDirection = degrees;}   
   public double getPointDirection() {return myPointDirection;}
   
-  //circular bullets
+  //bullets not pointed in right direction
   public void show()
   {
-    //no need to translate; just use ellipse and myCenter X and Y
+    fill(255);
+    stroke(255);
+    ellipse((float)myCenterX+21, (float)myCenterY, 10, 2);
   }
+  //public void move - remove bullet after passes screen?
 }

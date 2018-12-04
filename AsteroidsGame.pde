@@ -1,6 +1,7 @@
 Spaceship hal = new Spaceship();
 Star[] galaxy = new Star[100];
 ArrayList<Asteroid> rocks = new ArrayList<Asteroid>();
+ArrayList<Bullet> thomas = new ArrayList<Bullet>();
 float d;
 public void setup() 
 {
@@ -25,8 +26,22 @@ public void draw()
   {
     rocks.get(i).show();
     rocks.get(i).move();
-    d = dist(hal.getX(), hal.getY(), rocks.get(i).getX(), rocks.get(i).getY());
+    d = dist(hal.getX(), hal.getY(), rocks.get(i).getX(), rocks.get(i).getY());  //remove? add shields?
     if (d <= 17) {rocks.remove(i);}
+  }
+  for (int i = 0; i < thomas.size(); i++)
+  {
+    thomas.get(i).show();
+    thomas.get(i).move();
+    for (int ni = 0; ni < rocks.size(); ni++)  //not colliding in time
+    {
+      if (dist(rocks.get(i).getX(), rocks.get(i).getY(), thomas.get(i).getX()+21, thomas.get(i).getY()) <= 30)
+      {
+        rocks.remove(ni);
+        thomas.remove(i);
+        break;
+      }
+    }
   }
   //better response time
   //hyperspace not included: one press = multiple presses since draw() runs quickly
@@ -60,5 +75,8 @@ public void keyPressed()
     hal.setX((int)(Math.random()*600));  //new center X and Y
     hal.setY((int)(Math.random()*600));
     hal.setPointDirection((int)(Math.random()*360));  //new random direction
+  } else if (keyCode == 32)
+  {
+    thomas.add(new Bullet(hal));
   }
 }
