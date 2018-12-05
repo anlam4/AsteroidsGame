@@ -26,7 +26,7 @@ public void draw()
   {
     rocks.get(i).show();
     rocks.get(i).move();
-    d = dist(hal.getX(), hal.getY(), rocks.get(i).getX(), rocks.get(i).getY());  //remove? add shields?
+    d = dist(hal.getX(), hal.getY(), rocks.get(i).getX(), rocks.get(i).getY());
     if (d <= 17) {rocks.remove(i);}
   }
   for (int i = 0; i < thomas.size(); i++)

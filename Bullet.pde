@@ -1,11 +1,13 @@
 class Bullet extends Floater
 {
+  double dRadians;
   Bullet(Spaceship theShip)
   {
-    myCenterX = theShip.getX();
-    myCenterY = theShip.getY();
+    
     myPointDirection = theShip.getPointDirection();
-    double dRadians = myPointDirection*(Math.PI/180);
+    dRadians = myPointDirection*(Math.PI/180);
+    myCenterX = theShip.getX() + 21*Math.cos(dRadians);  //hypotenuse is 21
+    myCenterY = theShip.getY() + 21*Math.sin(dRadians);  //not ready yet
     myDirectionX = 5 * Math.cos(dRadians);
     myDirectionY = 5 * Math.sin(dRadians);
   }
@@ -20,12 +22,11 @@ class Bullet extends Floater
   public void setPointDirection(int degrees) {myPointDirection = degrees;}   
   public double getPointDirection() {return myPointDirection;}
   
-  //bullets not pointed in right direction
-  public void show()
+  public void show()  //best not to change this
   {
     fill(255);
     stroke(255);
-    ellipse((float)myCenterX+21, (float)myCenterY, 10, 2);
+    ellipse((float)myCenterX, (float)myCenterY, 10, 2);
   }
   //public void move - remove bullet after passes screen?
 }
