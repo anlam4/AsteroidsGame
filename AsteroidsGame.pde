@@ -33,9 +33,9 @@ public void draw()
   {
     thomas.get(i).show();
     thomas.get(i).move();
-    for (int ni = 0; ni < rocks.size(); ni++)  //change to for each loop
+    for (int ni = 0; ni < rocks.size(); ni++)
     {
-      if (dist(rocks.get(ni).getX(), rocks.get(ni).getY(), thomas.get(i).getX(), thomas.get(i).getY()) <= 20)
+      if (dist(rocks.get(ni).getX(), rocks.get(ni).getY(), thomas.get(i).getX(), thomas.get(i).getY()) <= 15)
       {
         rocks.remove(ni);
         thomas.remove(i);
