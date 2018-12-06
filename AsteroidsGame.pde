@@ -10,7 +10,7 @@ public void setup()
   {
     galaxy[i] = new Star();
   }
-  for (int i = 0; i < 31; i++)
+  for (int i = 0; i < 5; i++)
   {
     rocks.add(new Asteroid());
   }
@@ -33,9 +33,9 @@ public void draw()
   {
     thomas.get(i).show();
     thomas.get(i).move();
-    for (int ni = 0; ni < rocks.size(); ni++)  //not colliding in time
+    for (int ni = 0; ni < rocks.size(); ni++)  //change to for each loop
     {
-      if (dist(rocks.get(i).getX(), rocks.get(i).getY(), thomas.get(i).getX()+21, thomas.get(i).getY()) <= 30)
+      if (dist(rocks.get(ni).getX(), rocks.get(ni).getY(), thomas.get(i).getX(), thomas.get(i).getY()) <= 20)
       {
         rocks.remove(ni);
         thomas.remove(i);
