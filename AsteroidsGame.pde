@@ -3,6 +3,8 @@ Star[] galaxy = new Star[100];
 ArrayList<Asteroid> rocks = new ArrayList<Asteroid>();
 ArrayList<Bullet> thomas = new ArrayList<Bullet>();
 float d;
+int shields = 5;
+boolean reset = false;
 public void setup() 
 {
   size(600, 600);
@@ -10,7 +12,7 @@ public void setup()
   {
     galaxy[i] = new Star();
   }
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < 20; i++)
   {
     rocks.add(new Asteroid());
   }
@@ -22,20 +24,44 @@ public void draw()
   {
     galaxy[i].show();
   }
+  while(shields == -1)
+  {
+    reset = true;
+    textSize(40);
+    fill(255);
+    text("Spaceship destroyed!", 450, 30);
+    text("Game over.");
+    text("Press enter to reset.");
+  }
+  while(rocks.size() == 0)
+  {
+    reset = true;
+    textSize(40);
+    fill(255);
+    text("You win!", 450, 30);
+    text("Press enter to reset.");
+  }
   for (int i = 0; i < rocks.size(); i++)  //displays and moves asteroids
   {
     rocks.get(i).show();
     rocks.get(i).move();
     d = dist(hal.getX(), hal.getY(), rocks.get(i).getX(), rocks.get(i).getY());
-    if (d <= 17) {rocks.remove(i);}
+    if (d <= 17) 
+    {
+      rocks.remove(i);
+      shields = shields - 1;
+    }
   }
+  textSize(18);
+  fill(255);
+  text("Shields left : " + shields, 450, 30);
   for (int i = 0; i < thomas.size(); i++)
   {
     thomas.get(i).show();
     thomas.get(i).move();
     for (int ni = 0; ni < rocks.size(); ni++)
     {
-      if (dist(rocks.get(ni).getX(), rocks.get(ni).getY(), thomas.get(i).getX(), thomas.get(i).getY()) <= 15)
+      if (dist(rocks.get(ni).getX(), rocks.get(ni).getY(), thomas.get(i).getX(), thomas.get(i).getY()) <= 13)
       {
         rocks.remove(ni);
         thomas.remove(i);
@@ -78,5 +104,12 @@ public void keyPressed()
   } else if (keyCode == 32)
   {
     thomas.add(new Bullet(hal));
+  } else if (keyCode == 10 && reset)
+  {
+    for (int i = 0; i < 20; i++)
+    {
+      rocks.add(new Asteroid());
+    }
+    shields = 5;
   }
 }
