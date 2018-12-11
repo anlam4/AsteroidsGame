@@ -3,7 +3,7 @@ Star[] galaxy = new Star[100];
 ArrayList<Asteroid> rocks = new ArrayList<Asteroid>();
 ArrayList<Bullet> thomas = new ArrayList<Bullet>();
 float d;
-int shields = 5;
+int shields = 3;
 boolean reset = false;
 public void setup() 
 {
@@ -27,19 +27,20 @@ public void draw()
   while(shields == -1)
   {
     reset = true;
-    textSize(40);
+    textSize(32);
     fill(255);
-    text("Spaceship destroyed!", 450, 30);
-    text("Game over.");
-    text("Press enter to reset.");
+    text("Spaceship destroyed!", 145, 200);
+    text("Game over.", 215, 280);
+    text("Press enter to reset.", 150, 360);
+    System.out.println(shields);
   }
   while(rocks.size() == 0)
   {
     reset = true;
-    textSize(40);
+    textSize(32);
     fill(255);
-    text("You win!", 450, 30);
-    text("Press enter to reset.");
+    text("You win!", 230, 240);
+    text("Press enter to reset.", 150, 330);
   }
   for (int i = 0; i < rocks.size(); i++)  //displays and moves asteroids
   {
@@ -110,6 +111,12 @@ public void keyPressed()
     {
       rocks.add(new Asteroid());
     }
-    shields = 5;
+    shields = 3;
+    //hyperspace
+    hal.setDirectionX(0);  
+    hal.setDirectionY(0);
+    hal.setX((int)(Math.random()*600)); 
+    hal.setY((int)(Math.random()*600));
+    hal.setPointDirection((int)(Math.random()*360));
   }
 }
