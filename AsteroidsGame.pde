@@ -12,36 +12,14 @@ public void setup()
   {
     galaxy[i] = new Star();
   }
-  for (int i = 0; i < 20; i++)
+  for (int i = 0; i < 15; i++)
   {
     rocks.add(new Asteroid());
   }
 }
 public void draw() 
 {
-  background(0);
-  for (int i = 0; i < galaxy.length; i++)  //displays stars
-  {
-    galaxy[i].show();
-  }
-  while(shields == -1)
-  {
-    reset = true;
-    textSize(32);
-    fill(255);
-    text("Spaceship destroyed!", 145, 200);
-    text("Game over.", 215, 280);
-    text("Press enter to reset.", 150, 360);
-    System.out.println(shields);
-  }
-  while(rocks.size() == 0)
-  {
-    reset = true;
-    textSize(32);
-    fill(255);
-    text("You win!", 230, 240);
-    text("Press enter to reset.", 150, 330);
-  }
+  space();
   for (int i = 0; i < rocks.size(); i++)  //displays and moves asteroids
   {
     rocks.get(i).show();
@@ -75,6 +53,27 @@ public void draw()
   if (keyPressed && keyCode != 16) {keyPressed();}
   hal.show();
   hal.move();
+  if (shields == -1)
+  {
+    space();
+    reset = true;
+    textSize(32);
+    fill(255);
+    text("Spaceship destroyed!", 145, 200);
+    text("Game over.", 215, 280);
+    text("Press enter to reset.", 150, 360);
+    noLoop();
+  }
+  if (rocks.size() == 0)
+  {
+    space();
+    reset = true;
+    textSize(32);
+    fill(255);
+    text("You win!", 230, 240);
+    text("Press enter to reset.", 150, 330);
+    noLoop();
+  }
 }
 public void keyPressed()
 {
@@ -107,7 +106,9 @@ public void keyPressed()
     thomas.add(new Bullet(hal));
   } else if (keyCode == 10 && reset)
   {
-    for (int i = 0; i < 20; i++)
+    loop();
+    rocks = new ArrayList<Asteroid>();
+    for (int i = 0; i < 15; i++)
     {
       rocks.add(new Asteroid());
     }
@@ -118,5 +119,13 @@ public void keyPressed()
     hal.setX((int)(Math.random()*600)); 
     hal.setY((int)(Math.random()*600));
     hal.setPointDirection((int)(Math.random()*360));
+  }
+}
+public void space()
+{
+  background(0);
+  for (int i = 0; i < galaxy.length; i++)  //displays stars
+  {
+    galaxy[i].show();
   }
 }
